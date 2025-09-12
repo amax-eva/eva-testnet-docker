@@ -1,0 +1,6 @@
+FROM erigontech/erigon:latest
+
+EXPOSE 30303 8545 8551 6060
+
+CMD ["erigon", \
+     "--config /config/erigon.yaml"]
