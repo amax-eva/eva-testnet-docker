@@ -15,42 +15,42 @@ services:
     networks:
       - eth-net
 
-  beacon:
-    build:
-      context: .
-      dockerfile: Dockerfile.beacon
-    volumes:
-      - ./config:/config
-      - ./network:/network
-      - ./secret:/secret
-      - ./data:/data
-    ports:
-      - "13000:13000"
-      - "12000:12000/udp"
-      - "4000:4000"
-      - "3500:3500"
-      - "8080:8080"
-    depends_on:
-      - erigon
-    networks:
-      - eth-net
+  # beacon:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.beacon
+  #   volumes:
+  #     - ./config:/config
+  #     - ./network:/network
+  #     - ./secret:/secret
+  #     - ./data:/data
+  #   ports:
+  #     - "13000:13000"
+  #     - "12000:12000/udp"
+  #     - "4000:4000"
+  #     - "3500:3500"
+  #     - "8080:8080"
+  #   depends_on:
+  #     - erigon
+  #   networks:
+  #     - eth-net
 
-  validator:
-    build:
-      context: .
-      dockerfile: Dockerfile.validator
-    volumes:
-      - ./config:/config
-      - ./network:/network
-      - ./secret:/secret
-      - ./wallets:/wallets
-      - ./data:/data
-    ports:
-      - "8281:8281"
-    depends_on:
-      - beacon
-    networks:
-      - eth-net
+  # validator:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.validator
+  #   volumes:
+  #     - ./config:/config
+  #     - ./network:/network
+  #     - ./secret:/secret
+  #     - ./wallets:/wallets
+  #     - ./data:/data
+  #   ports:
+  #     - "8281:8281"
+  #   depends_on:
+  #     - beacon
+  #   networks:
+  #     - eth-net
 
 networks:
   eth-net:
