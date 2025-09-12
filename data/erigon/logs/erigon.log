@@ -1,0 +1,16 @@
+[INFO] [09-12|16:06:41.934] logging to file system                   log dir=data/erigon/logs file prefix=erigon log level=info json=false
+[INFO] [09-12|16:06:41.936] Starting Erigon on Ethereum mainnet... 
+[INFO] [09-12|16:06:41.940] Maximum peer count                       total=32
+[INFO] [09-12|16:06:41.941] starting HTTP APIs                       port=8545 APIs=eth,erigon,engine http.compression=true
+[INFO] [09-12|16:06:41.941] Opening Database                         label=chaindata path=/Users/OxBest/evachain/eva-testnet-docker/data/erigon/chaindata
+[INFO] [09-12|16:06:41.944] [db] open                                label=chaindata sizeLimit=1TB pageSize=16KB
+[INFO] [09-12|16:06:41.945] Re-Opening DB in exclusive mode to apply migrations 
+[INFO] [09-12|16:06:41.952] [db] open                                label=chaindata sizeLimit=1TB pageSize=16KB
+[INFO] [09-12|16:06:41.952] Apply migration                          name=db_schema_version5
+[INFO] [09-12|16:06:41.953] Applied migration                        name=db_schema_version5
+[INFO] [09-12|16:06:41.953] Apply migration                          name=reset_stage_txn_lookup
+[INFO] [09-12|16:06:41.955] Applied migration                        name=reset_stage_txn_lookup
+[INFO] [09-12|16:06:41.956] Updated DB schema to                     version=7.0.0
+[INFO] [09-12|16:06:41.966] [db] open                                label=chaindata sizeLimit=1TB pageSize=16KB
+[INFO] [09-12|16:06:42.005] Writing custom genesis block             hash=0x98d4756195d5b6c66088cd6542c842895cf10c529d51691bfc47c138a9e5837b
+[INFO] [09-12|16:06:42.011] Successfully wrote genesis state         hash=0x98d4756195d5b6c66088cd6542c842895cf10c529d51691bfc47c138a9e5837b
