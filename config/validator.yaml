@@ -9,4 +9,4 @@ suggested-fee-recipient: 0xF84AE3A59D9c8a08b9308Ba4D3d0341135c51989
 accept-terms-of-use: true
 disable-monitoring: false
 monitoring-host: 0.0.0.0
-monitoring-port: 8080
+monitoring-port: 8281

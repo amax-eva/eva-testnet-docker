@@ -46,7 +46,7 @@ services:
       - ./wallets:/wallets
       - ./data:/data
     ports:
-      - "8081:8081"
+      - "8281:8281"
     depends_on:
       - beacon
     networks:
