@@ -1,5 +1,5 @@
-chain-id: 2248 
-network-id: 2248
+chain-id: 2268 
+network-id: 2268
 accept-terms-of-use: true
 datadir: /data/beacon
 log-file: /logs/beacon.log

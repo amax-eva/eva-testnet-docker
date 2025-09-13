@@ -1,4 +1,4 @@
-networkid: 2248
+networkid: 2268
 datadir: /data/erigon
 log.dir.path: /logs
 authrpc.jwtsecret: /secret/jwt.hex
