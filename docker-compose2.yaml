@@ -24,7 +24,7 @@ services:
     command:
       - --config=/config/erigon.yaml
       - --nat=extip:192.168.31.71
-      - --bootnodes=enode://b6b4b7bae96823c426b612e7d2080e4bcc5c8972d59f3fce983c2a327efc30571c8bc1b275182b54e08a9e2e639af8f35f1556b7a92bd2d6286840d03ef0659a@172.31.30.93:30303
+      - --bootnodes=enode://e3be1105a6d2bd9d087e4e0470167df7d254b935dc51c5786c77a57b876c2edaa47c7a499eac19435ef93ef8c32b5a70f0b6a583d2090a1fea907105f9e46f48@172.31.30.93:30303
     restart: unless-stopped
     networks:
       - eth-net
@@ -49,8 +49,8 @@ services:
       - --config-file=/config/beacon.yaml
       - --checkpoint-sync-url=http://172.31.30.93:3500
       - --p2p-host-ip=192.168.31.71
-      - --suggested-fee-recipient=0xF84AE3A59D9c8a08b9308Ba4D3d0341135c51989
-      - --peer="/ip4/172.31.30.93/tcp/13000/p2p/16Uiu2HAmFyo8PZqPVq6yVHfSeSrojE2Y3wd3fkqMyF53me24SZ3P"
+      - --suggested-fee-recipient=0x6318BC08F350835f8b2e2A542f04e2aB129Ab5C4
+      - --peer="/ip4/172.31.30.93/tcp/13000/p2p/16Uiu2HAmLxXjXMpBz77DFGYmSZVZGHkUhDHu1cWrZsaW4DuER9yd"
     restart: unless-stopped
     depends_on:
       - erigon
@@ -72,7 +72,7 @@ services:
     command:
       - --config-file=/config/validator.yaml
       - --wallet-dir=/wallets/wallet2
-      - --suggested-fee-recipient=0xF84AE3A59D9c8a08b9308Ba4D3d0341135c51989
+      - --suggested-fee-recipient=0x6318BC08F350835f8b2e2A542f04e2aB129Ab5C4
     restart: unless-stopped
     depends_on:
       - beacon
