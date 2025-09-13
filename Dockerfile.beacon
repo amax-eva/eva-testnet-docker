@@ -1,6 +1,0 @@
-FROM gcr.io/offchainlabs/prysm/beacon-chain:stable
-
-EXPOSE 13000 12000 4000 3500 8080
-
-CMD ["/beacon-chain", \
-     "--config-file=/config/beacon.yaml"]

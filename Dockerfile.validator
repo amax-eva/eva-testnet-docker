@@ -1,6 +1,0 @@
-FROM gcr.io/offchainlabs/prysm/validator:stable
-
-EXPOSE 8080
-
-CMD ["/validator", \
-     "--config-file=/config/validator.yaml"]
