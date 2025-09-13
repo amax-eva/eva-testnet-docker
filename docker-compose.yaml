@@ -5,6 +5,7 @@ services:
   erigon:
     image: erigontech/erigon:latest
     container_name: erigon
+    user: "root"
     volumes:
       - ./config:/config
       - ./secret:/secret
