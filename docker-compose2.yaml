@@ -1,0 +1,84 @@
+name: eva-testnet
+version: "3.9"
+
+services:
+  erigon:
+    image: erigontech/erigon:latest
+    container_name: erigon
+    user: "root"
+    volumes:
+      - ./config:/config
+      - ./secret:/secret
+      - ./data:/data
+      - ./logs:/logs
+    ports:
+      - "30303:30303"
+      - "8545:8545"
+      - "8551:8551"
+      - "6061:6061"
+      - "8546:8546"
+      - "42069:42069"
+    environment:
+      - EXTIP=192.168.31.71
+      # - EXTIP="$(ip addr show ens5 | grep 'inet ' | awk '{print $2}' | cut -d'/' -f1)"
+    command:
+      - --config=/config/erigon.yaml
+      - --nat=extip:192.168.31.71
+      - --bootnodes=enode://b6b4b7bae96823c426b612e7d2080e4bcc5c8972d59f3fce983c2a327efc30571c8bc1b275182b54e08a9e2e639af8f35f1556b7a92bd2d6286840d03ef0659a@172.31.30.93:30303
+    restart: unless-stopped
+    networks:
+      - eth-net
+
+  beacon:
+    image: gcr.io/offchainlabs/prysm/beacon-chain:stable
+    container_name: beacon
+    volumes:
+      - ./config:/config
+      - ./network:/network
+      - ./secret:/secret
+      - ./data:/data
+      - ./logs:/logs
+    ports:
+      - "13000:13000"
+      - "12000:12000/udp"
+      - "4000:4000"
+      - "3500:3500"
+      - "8080:8080"
+      - "6060:6060"
+    command:
+      - --config-file=/config/beacon.yaml
+      - --checkpoint-sync-url=http://172.31.30.93:3500
+      - --p2p-host-ip=192.168.31.71
+      - --suggested-fee-recipient=0xF84AE3A59D9c8a08b9308Ba4D3d0341135c51989
+      - --peer="/ip4/172.31.30.93/tcp/13000/p2p/16Uiu2HAmFyo8PZqPVq6yVHfSeSrojE2Y3wd3fkqMyF53me24SZ3P"
+    restart: unless-stopped
+    depends_on:
+      - erigon
+    networks:
+      - eth-net
+
+  validator:
+    image: gcr.io/offchainlabs/prysm/validator:stable
+    container_name: validator
+    volumes:
+      - ./config:/config
+      - ./network:/network
+      - ./secret:/secret
+      - ./wallets:/wallets
+      - ./data:/data
+      - ./logs:/logs
+    ports:
+      - "8281:8281"
+    command:
+      - --config-file=/config/validator.yaml
+      - --wallet-dir=/wallets/wallet2
+      - --suggested-fee-recipient=0xF84AE3A59D9c8a08b9308Ba4D3d0341135c51989
+    restart: unless-stopped
+    depends_on:
+      - beacon
+    networks:
+      - eth-net
+
+networks:
+  eth-net:
+    driver: bridge
